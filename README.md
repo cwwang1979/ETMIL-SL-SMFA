@@ -127,7 +127,7 @@ To set up the ETMIL model for different tasks:
 1. Open the Config file ./Config/TMIL.yaml
 2. Change the log_path in Config/TMIL.yaml to the corresponding model path
    
-(e.g., For identifying the primary origin of malignant cells in pleural and ascitic fluids directly from WSIs of cytological smears: please set the parameter "log_path" in Config/TMIL.yaml as "./log/Cytology/")
+(e.g., For identifying the primary origin of malignant cells in pleural and ascitic fluids directly from WSIs of cytological smears: please set the parameter "log_path" in Config/TMIL.yaml as "./log/Cytology/ETMIL-SL-SMFA/")
 
 The model of each task has been stored in the zip file with the following file structure: 
 ```
