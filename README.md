@@ -11,10 +11,10 @@ Ensemble Transformer-based Multiple Instance Learning with Soft Loss Training an
 - Python (3.7.11), h5py (2.10.0), opencv-python (4.2.0.34), PyTorch (1.10.1), torchvision (0.11.2), pytorch-lightning (1.2.3).
 
 #### Download
-Execution file, configuration file, and models are download from the [zip](https://drive.google.com/file/d/1-b5eWTe-J2kSx8BwnLF6wcGbTgKyA7N7/view?usp=drive_link) file.  (For reviewers, "..._cwlab" is the password to decompress the file.)
+Execution file, configuration file, and models are download from the [zip](https://drive.google.com/file/d/1jQRKKcIbgVhmQj-Pj_LB-rk1V4rrbC9F/view?usp=drive_link) file.  (For reviewers, "..._cwlab" is the password to decompress the file.)
 
 ## Steps
-#### 1.Installation
+#### 1. Installation
 
 Please refer to the following instructions.
 ```
@@ -44,13 +44,13 @@ Place the whole slide image in ./DATA
   
 ```
 
-Then in a terminal run:
+Then, in a terminal, run:
 ```
 python create_patches.py --source DATA/XXXX --save_dir DATA_PATCHES/XXXX --patch_size 256 --preset tcga.csv --seg --patch --stitch
 
 ```
 
-After running in a terminal, the result will be produced in folder named 'DATA_PATCHES/XXXX', which includes the masks and the sticthes in .jpg and the coordinates of the patches will stored into HD5F files (.h5) like the following structure.
+After running in a terminal, the result will be produced in the folder named 'DATA_PATCHES/XXXX', which includes the masks and the stitches in .jpg, and the coordinates of the patches will be stored in HD5F files (.h5) like the following structure.
 ```
 DATA_PATCHES/XXXX/
 ├── masks/
@@ -77,7 +77,7 @@ DATA_PATCHES/XXXX/
 
 #### 2. Feature Extraction
 
-In the terminal run:
+In the terminal, run:
 ```
 CUDA_VISIBLE_DEVICES=0,1 python extract_features.py --data_h5_dir DATA_PATCHES/XXXX/ --data_slide_dir DATA/XXXX --csv_path DATA_PATCHES/XXXX/process_list_autogen.csv --feat_dir DATA_FEATURES/XXXX/ --batch_size 512 --slide_ext .svs
 
@@ -100,9 +100,9 @@ DATA_FEATURES/XXXX/
 ```
 
 #### 3. Training and Testing List
-Prepare the training, validation  and the testing list containing the labels of the files and put it into ./dataset_csv folder. (The csv sample "fold0.csv" is provided)
+Prepare the training, validation, and testing list containing the labels of the files and put it into the ./dataset_csv folder. (The CSV sample "fold0.csv" is provided)
 
-example of the csv files:
+Example of the CSV files:
 |      | train          | train_label     | val        | val_label | test        | test_label |  
 | :--- | :---           |  :---           | :---:      |:---:      | :---:      |:---:      | 
 |  0   | train_slide_1        | 1               | val_slide_1    |   0       | test_slide_1    |   0       | 
@@ -114,50 +114,35 @@ example of the csv files:
 
 #### 4. Inference 
 
-To generate the prediction outcome of the ETMIL model, containing K base models:
+To generate the prediction outcome of the ETMIL model, containing E base models:
 ```
-python ensemble_inf.py --stage='test' --config='Config/TMIL.yaml'  --gpus=0 --top_fold=K
+python ensemble_inf_multiple.py --stage='test' --config='Config/TMIL.yaml'  --gpus=0 --top_fold=E
 ```
-On the other hand, to generate the prediction outcome of the TMIL model, containing one single base models:
+On the other hand, to generate the prediction outcome of the TMIL model, containing a single base model:
 ```
-python ensemble_inf.py --stage='test' --config='Config/TMIL.yaml'  --gpus=0 --top_fold=1
+python ensemble_inf_multiple.py --stage='test' --config='Config/TMIL.yaml'  --gpus=0 --top_fold=1
 ```
 
-To setup the ETMIL model for diffierent tasks: 
+To set up the ETMIL model for different tasks: 
 1. Open the Config file ./Config/TMIL.yaml
-2. Change the log_path in Config/TMIL.yaml to the correlated model path
+2. Change the log_path in Config/TMIL.yaml to the corresponding model path
    
-(e.g. For prediction of the cancer subtype in CRC: please set the parameter "log_path" in Config/TMIL.yaml as "./log/TCGA_CRC/CRC_subtype/ETMIL_SSLViT/")
+(e.g., For identifying the primary origin of malignant cells in pleural and ascitic fluids directly from WSIs of cytological smears: please set the parameter "log_path" in Config/TMIL.yaml as "./log/Cytology/")
 
 The model of each task has been stored in the zip file with the following file structure: 
 ```
 log/
-├── TCGA_CRC/
-│   ├── CRC_subtype
-│   │   └── ETMIL_SSLViT
-│   │
-│   ├── Mucinous_TMB_status 
-│   │   └── ETMIL_SSLViT
-│   │
-│   └── Non-mucinous_TMB_status
-│       └── ETMIL_SSLViT
-│
-└── TCGA_EC/
-    ├── EC_subtype
-    │   └── ETMIL_SSLViT
-    │
-    ├── Aggressive_TMB_status
-    │   └── ETMIL_SSLViT
-    │
-    └── Non-aggressive_TMB_status
-        └── ETMIL_SSLViT      
+├── Cytology/
+│   └── ETMIL-SL-SMFA
+└── CellBlock/
+    └── ETMIL-SL-SMFA
 ```
 
 
 ## Training
 #### Preparing Training Splits
 
-To create a N fold for training and validation set from the training list. The default proportion for the training:validation splits used in this study is 9:1. 
+To create an E-fold for training and validation sets from the training list. 
 ```
 dataset_csv/
 ├── fold0.csv
@@ -168,19 +153,19 @@ dataset_csv/
 
 #### Training
 
-Run this code in the terminal to training N fold:
+Run this code in the terminal to train E-fold:
 ```
 for((FOLD=0;FOLD<N;FOLD++)); do python train.py --stage='train' --config='Config/TMIL.yaml' --gpus=0 --fold $FOLD ; done
 ```
 
-Run this code in the terminal to training one single fold:
+Run this code in the terminal to train one single fold:
 ```
 python train.py --stage='train' --config='Config/TMIL.yaml' --gpus=0 --fold=0
 ```
 
 
 ## License
-This Python source code is released under a creative commons license, which allows for personal and research use only. For a commercial license please contact Prof Ching-Wei Wang. You can view a license summary here:  
+This Python source code is released under a Creative Commons license, which allows for personal and research use only. For a commercial license please contact Prof Ching-Wei Wang. You can view a license summary here:  
 http://creativecommons.org/licenses/by-nc/4.0/
 
 
