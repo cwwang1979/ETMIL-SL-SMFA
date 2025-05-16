@@ -40,7 +40,7 @@ Place the whole slide image in ./DATA
 ├── slide_1.svs
 ├── slide_2.svs
 │        ⋮
-└── slide_n.svs
+└── slide_z.svs
   
 ```
 
@@ -90,13 +90,13 @@ DATA_FEATURES/XXXX/
 │   ├── slide_1.h5
 │   ├── slide_2.h5
 │   │       ⋮
-│   └── slide_n.h5
+│   └── slide_z.h5
 │
 └── pt_files/
     ├── slide_1.pt
     ├── slide_2.pt
     │       ⋮
-    └── slide_n.pt
+    └── slide_z.pt
 ```
 
 #### 3. Training and Testing List
@@ -108,7 +108,7 @@ Example of the CSV files:
 |  0   | train_slide_1        | 1               | val_slide_1    |   0       | test_slide_1    |   0       | 
 |  1   | train_slide_2        | 0               | val_slide_2    |   1       | test_slide_2    |   0       |
 |  ... | ...            | ...             | ...        | ...       | ...        | ...       |
-|  n-1   | train_slide_n        | 1               |     |          |    |          |
+|  z-1   | train_slide_z        | 1               |     |          |    |          |
 
 
 
@@ -148,7 +148,7 @@ dataset_csv/
 ├── fold0.csv
 ├── fold1.csv
 │       ⋮
-└── foldN.csv
+└── foldE.csv
 ```
 
 #### Training
