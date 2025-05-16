@@ -57,19 +57,19 @@ DATA_PATCHES/XXXX/
 │   ├── slide_1.jpg
 │   ├── slide_2.jpg
 │   │       ⋮
-│   └── slide_n.jpg
+│   └── slide_z.jpg
 │
 ├── patches/
 │   ├── slide_1.h5
 │   ├── slide_2.h5
 │   │       ⋮
-│   └── slide_n.h5
+│   └── slide_z.h5
 │
 ├── stitches/
 │   ├── slide_1.jpg
 │   ├── slide_2.jpg
 │   │       ⋮
-│   └── slide_n.jpg
+│   └── slide_z.jpg
 │
 └── process_list_autogen.csv
 ```
