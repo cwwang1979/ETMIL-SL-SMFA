@@ -19,7 +19,7 @@ Wang et al. (In submission) Deep Learning to Identify Tumor Origins Using Cytolo
 
 ## Steps
 #### 1. Installation
-Execution file, configuration file, and models are download from the [zip](https://drive.google.com/file/d/1jQRKKcIbgVhmQj-Pj_LB-rk1V4rrbC9F/view?usp=drive_link](https://drive.google.com/file/d/1oWv64FYYOdIb-eft6p85cb2sxXR3HTKr/view?usp=sharing)) file.  (Please see the code availability section in the manuscript for the password to decompress the file.)
+Execution file, configuration file, and models are download from the [zip](https://drive.google.com/file/d/1oWv64FYYOdIb-eft6p85cb2sxXR3HTKr/view?usp=sharing) file.  (Please see the code availability section in the manuscript for the password to decompress the file.)
 Please refer to the following instructions.
 ```
 # create and activate the conda environment
