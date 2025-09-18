@@ -3,7 +3,7 @@ Ensemble Transformer-based Multiple Instance Learning with Soft Loss Training an
 
 ## Associated Publications
 
-Wang et al. (In submission) Deep Learning to Identify Tumor Origins Using Cytology or Cell Block Whole Slide Images
+Wang et al. (In submission) Deep Learning to Identify Tumor Origins Using Cytology or Histology Whole Slide Images
 
 ## Setup
 
