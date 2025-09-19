@@ -118,7 +118,7 @@ Example of the CSV files:
 
 #### 4. Inference 
 
-To generate the prediction outcome of the ETMIL model, containing E base models:
+To generate the prediction outcome of the ETMIL model, containing E base models (E = 6 in histopathology and Cell Block, E = 8 in Cytology):
 ```
 python ensemble_inf_multiple.py --stage='test' --config='Config/TMIL.yaml'  --gpus=0 --top_fold=E
 ```
