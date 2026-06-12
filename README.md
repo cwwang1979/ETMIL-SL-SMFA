@@ -176,8 +176,10 @@ http://creativecommons.org/licenses/by-nc/4.0/
 ## Contact
 Prof. Ching-Wei Wang  
 
+Email: cwwang1979@gmail.com ; aiexplore.tw@gmail.com 
+
 https://sites.google.com/view/chingweiwang
-cwwang1979@gmail.com ; aiexplore.tw@gmail.com 
+
   
 
 
