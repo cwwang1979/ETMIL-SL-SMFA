@@ -3,7 +3,7 @@ Ensemble Transformer-based Multiple Instance Learning with Soft Loss Training an
 
 ## Associated Publications
 
-Wang et al. (In submission) Deep Learning to Identify Tumor Origins Using Cytology or Histology Whole Slide Images
+Wang* et al. (in press) Soft multiclass feature augmented deep learning to predict tumor origins using cytology or histology whole slide images, npj Digital Medicine (JCR 2024: IF=15.1, Q1 1/185 Health Care Sciences & Services) [First & *Corresponding author] 
 
 ## Setup
 
@@ -175,8 +175,9 @@ http://creativecommons.org/licenses/by-nc/4.0/
 
 ## Contact
 Prof. Ching-Wei Wang  
+
+https://sites.google.com/view/chingweiwang
+cwwang1979@gmail.com ; aiexplore.tw@gmail.com 
   
-cweiwang@mail.ntust.edu.tw; cwwang1979@gmail.com  
-  
-National Taiwan University of Science and Technology
+
 
